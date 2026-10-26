@@ -6,7 +6,7 @@ how the site works, update this file in the same pull request.
 
 **Placeholders Fabrizio should fill in when the repo is created:**
 - Repo: `https://github.com/fabriziotarara/wander-roam`
-- Netlify site name: `TODO`
+- Netlify site name: `wanderroamtravel`
 - Where local image files live in the repo: `TODO (folder name)`
 
 ---
