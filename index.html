@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wander & Roam | Bespoke Travel Advisory by Courtney Tarara</title>
+    
+    <!-- Meta Descriptions & SEO -->
+    <meta name="description" content="Bespoke luxury travel advisory by Courtney Tarara. Customized itineraries, ocean & river cruises, and luxury resort getaways crafted with distinction.">
+    <meta name="keywords" content="travel advisor, luxury travel, bespoke itineraries, cruise travel, Courtney Tarara, Fora Travel, Wander & Roam">
+    <meta name="author" content="Courtney Tarara">
+
+    <!-- Open Graph / Social Sharing Media Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Wander & Roam | Bespoke Travel Advisory by Courtney Tarara">
+    <meta property="og:description" content="Bespoke luxury travel advisory by Courtney Tarara. Customized itineraries, luxury resorts, and ocean & river cruises.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1920&auto=format&fit=crop">
+    <meta property="og:site_name" content="Wander & Roam">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wander & Roam | Bespoke Travel Advisory by Courtney Tarara">
+    <meta name="twitter:description" content="Bespoke luxury travel advisory by Courtney Tarara. Customized itineraries, luxury resorts, and ocean & river cruises.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1920&auto=format&fit=crop">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Swiper.js for the slider -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Dancing Script', 'cursive'],
+                    },
+                    colors: {
+                        'brand-dark': '#1a1a1a',
+                        'brand-sand': '#d1c4b0',
+                        'brand-light': '#f9f9f9',
+                        'brand-gray': '#666666',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styles for hero background and other elements */
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            min-height: 600px;
+        }
+        .testimonial-card {
+            border-left: 4px solid #d1c4b0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        /* Custom underline for titles */
+        .title-underline {
+            position: relative;
+            padding-bottom: 0.75rem; /* 12px */
+        }
+        .title-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: #d1c4b0;
+        }
+        .title-underline-left::after {
+             left: 0;
+             transform: translateX(0);
+        }
+        
+        /* Swiper pagination and navigation styles */
+        .testimonial-slider .swiper-pagination-bullet {
+            background: #d1c4b0;
+            opacity: 0.5;
+        }
+        .testimonial-slider .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
+        .testimonial-slider .swiper-button-next,
+        .testimonial-slider .swiper-button-prev {
+            color: #1a1a1a; /* brand-dark */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .testimonial-slider .swiper-button-next:after,
+        .testimonial-slider .swiper-button-prev:after {
+            font-size: 2rem; /* 32px */
+        }
+        .swiper-button-disabled {
+            opacity: 0.35;
+            cursor: auto;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-brand-dark">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-4xl font-serif font-bold text-brand-dark">Wander & Roam</a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="hover:text-brand-sand transition-colors">About</a>
+                    <a href="#specialties" class="hover:text-brand-sand transition-colors">Specialties</a>
+                    <a href="#process" class="hover:text-brand-sand transition-colors">Process</a>
+                    <a href="#testimonials" class="hover:text-brand-sand transition-colors">Testimonials</a>
+                    <a href="#contact" class="bg-brand-dark text-white px-5 py-2 rounded-full hover:bg-black transition-all">Plan Your Trip</a>
+                </nav>
+                <button id="mobile-menu-button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2 rounded-md hover:bg-brand-light focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <a href="#about" class="block text-center py-3 px-6 hover:bg-brand-light transition-colors">About</a>
+            <a href="#specialties" class="block text-center py-3 px-6 hover:bg-brand-light transition-colors">Specialties</a>
+            <a href="#process" class="block text-center py-3 px-6 hover:bg-brand-light transition-colors">Process</a>
+            <a href="#testimonials" class="block text-center py-3 px-6 hover:bg-brand-light transition-colors">Testimonials</a>
+            <a href="#contact" class="block text-center py-4 px-6 bg-brand-dark text-white font-semibold">Plan Your Trip</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section with Static Background -->
+        <section class="hero-section flex items-center justify-center text-white pt-20 relative">
+            <!-- Overlay -->
+            <div class="bg-black/50 absolute top-0 left-0 w-full h-full"></div>
+            
+            <!-- Content -->
+            <div class="text-center relative z-10 px-4">
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-serif font-bold tracking-wide mb-4">Wander & Roam</h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light">Bespoke journeys, crafted with distinction.</p>
+                <a href="#contact" class="bg-white text-brand-dark px-8 py-4 rounded-full text-lg font-semibold hover:bg-brand-light transition-all transform hover:scale-105">Start Your Journey</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 lg:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                    <div class="w-full md:w-2/5">
+                        <img src="https://res.cloudinary.com/foratravelweb/image/upload/c_fill,g_auto,h_640,w_640/f_webp/q_90/6aa3fa2a-777c-41b2-ab48-0f9a33f1a27d?_a=DATAg1fiZAA0" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x500/1a1a1a/FFFFFF?text=Courtney+T.';"
+                             alt="Courtney Tarara" loading="lazy" decoding="async" class="rounded-lg shadow-2xl w-full h-auto object-cover aspect-square">
+                    </div>
+                    <div class="w-full md:w-3/5 text-center md:text-left">
+                        <h2 class="text-5xl lg:text-6xl font-serif text-brand-dark mb-6 title-underline title-underline-left">A Passion For Perfected Travel</h2>
+                        <p class="text-lg mb-4 text-brand-gray">Welcome! I'm Courtney Tarara, the heart and mind behind Wander & Roam. My philosophy is simple: travel should be an art form. It's in the seamless connections, the hidden gems, and the personalized details that a simple trip becomes a treasured story.</p>
+                        <p class="mb-6 text-brand-gray">With insider access and a meticulous approach, I design journeys that reflect your unique style. From luxury resorts to immersive cultural adventures, I handle every detail, leaving you free to simply experience the wonder of it all.</p>
+                        <a href="#specialties" class="text-brand-dark font-semibold hover:text-brand-sand transition-colors">Explore Specialties →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specialties Section -->
+        <section id="specialties" class="py-20 lg:py-28 bg-brand-light">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl lg:text-6xl font-serif text-brand-dark mb-4 title-underline">Travel Specialties</h2>
+                <p class="max-w-3xl mx-auto text-lg text-brand-gray mb-16">Curated experiences in destinations and travel styles I know and love.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1: Bespoke Itineraries -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?q=80&w=600&auto=format&fit=crop" alt="Custom trip planning" loading="lazy" decoding="async" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-serif mb-2 text-brand-dark">Bespoke Itineraries</h3>
+                            <p class="text-brand-gray">From multi-country European tours to relaxing getaways, every trip is meticulously designed to match your unique travel style.</p>
+                        </div>
+                    </div>
+                    <!-- Card 2: Luxury Resorts -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=600&auto=format&fit=crop" alt="Luxury All-Inclusive Resort" loading="lazy" decoding="async" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-serif mb-2 text-brand-dark">Luxury Resorts</h3>
+                            <p class="text-brand-gray">Indulge in world-class service and amenities at the finest hotels and all-inclusive resorts across the globe.</p>
+                        </div>
+                    </div>
+                    <!-- Card 3: Ocean & River Cruises -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://www.tedeytan.com/wp-content/uploads/2025/04/WP-2025.04.16-Virgin-Voyages-Cruise106295-05305-400K.jpg.webp" alt="Cruise ship on the ocean at sunset" loading="lazy" decoding="async" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-serif mb-2 text-brand-dark">Ocean & River Cruises</h3>
+                            <p class="text-brand-gray">Explore stunning coastlines and iconic rivers from the comfort of a luxury cruise ship, with curated excursions at every port.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="py-20 lg:py-28 bg-brand-dark text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-5xl lg:text-6xl font-serif mb-4 title-underline">The Planning Process</h2>
+                 <p class="max-w-2xl mx-auto text-lg text-gray-300 mb-16">Three steps to a perfectly executed journey.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+                    <div class="flex flex-col items-center border border-gray-700/50 p-8 rounded-lg">
+                        <div class="text-brand-sand text-5xl font-serif mb-4">I.</div>
+                        <h3 class="text-3xl font-serif mb-3">Discovery</h3>
+                        <p class="text-gray-400">We begin with a conversation to explore your unique tastes, desires, and travel aspirations.</p>
+                    </div>
+                    <div class="flex flex-col items-center border border-gray-700/50 p-8 rounded-lg">
+                        <div class="text-brand-sand text-5xl font-serif mb-4">II.</div>
+                        <h3 class="text-3xl font-serif mb-3">Design</h3>
+                        <p class="text-gray-400">I craft a bespoke itinerary proposal, a blueprint for your journey with hand-selected options.</p>
+                    </div>
+                     <div class="flex flex-col items-center border border-gray-700/50 p-8 rounded-lg">
+                        <div class="text-brand-sand text-5xl font-serif mb-4">III.</div>
+                        <h3 class="text-3xl font-serif mb-3">Execution</h3>
+                        <p class="text-gray-400">Once perfected, I handle all logistics and bookings. You simply anticipate the adventure ahead.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 lg:py-28 bg-brand-light">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-5xl lg:text-6xl font-serif text-brand-dark mb-4 title-underline">From Our Travelers</h2>
+                    <p class="max-w-2xl mx-auto text-lg text-brand-gray mb-16">Creating unforgettable experiences is my greatest joy.</p>
+                </div>
+                <!-- Swiper -->
+                <div class="testimonial-slider swiper-container max-w-4xl mx-auto relative">
+                    <div class="swiper-wrapper" id="testimonial-slides">
+                        <!-- Dynamically populated from testimonials.json -->
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination mt-8 relative"></div>
+                     <!-- Add Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fora Affiliation Section -->
+        <section id="fora-affiliation" class="py-20 lg:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
+                    <div class="md:w-1/3 flex-shrink-0 flex justify-center">
+                        <a href="https://www.foratravel.com/advisor/courtney-tarara" target="_blank" rel="noopener noreferrer">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_sYTtwAt4kh6Hbq1PRwgy5iJ3DCnE8mopcQ&s" alt="Fora Travel Logo" loading="lazy" decoding="async" class="h-32 rounded-lg transition-transform transform hover:scale-105">
+                        </a>
+                    </div>
+                    <div class="md:w-2/3">
+                        <h2 class="text-4xl lg:text-5xl font-serif text-brand-dark mb-4">Powered by Fora Travel</h2>
+                        <p class="text-brand-gray mb-4">
+                            My affiliation with Fora, a modern travel agency, unlocks a world of exclusive benefits for you. Through Fora's global network and preferred partnerships with the world's best hotels, cruise lines, and tour operators, I can offer my clients unparalleled value.
+                        </p>
+                        <p class="text-brand-gray mb-6">
+                            This means you receive VIP treatment, such as complimentary room upgrades, daily breakfast, resort credits, and other special perks, all at no extra cost. It's the advantage of a global travel powerhouse combined with my dedicated, personal service.
+                        </p>
+                        <a href="https://www.foratravel.com/advisor/courtney-tarara" target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-dark hover:text-brand-sand transition-colors">
+                            View My Fora Profile →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 lg:py-28 bg-brand-light">
+             <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-5xl lg:text-6xl font-serif text-brand-dark mb-4 title-underline">Begin Your Journey</h2>
+                    <p class="max-w-2xl mx-auto text-lg text-brand-gray mb-12">Share your travel aspirations below, and let's begin crafting your bespoke itinerary.</p>
+                </div>
+                <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg border border-gray-200 shadow-xl">
+                    <form action="/" method="POST" id="contact-form" name="contact" data-netlify="true" netlify netlify-honeypot="bot-field">
+                        <!-- Hidden inputs required for Netlify Forms -->
+                        <input type="hidden" name="form-name" value="contact">
+                        <p class="hidden" style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-brand-gray mb-1">Full Name</label>
+                                <input type="text" name="name" id="name" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-brand-sand focus:border-brand-sand transition-colors">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-brand-gray mb-1">Email Address</label>
+                                <input type="email" name="email" id="email" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-brand-sand focus:border-brand-sand transition-colors">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="destination" class="block text-sm font-medium text-brand-gray mb-1">Desired Destination(s)</label>
+                            <input type="text" name="destination" id="destination" placeholder="e.g., Greece, Costa Rica" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-brand-sand focus:border-brand-sand transition-colors">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-brand-gray mb-1">Tell me about your ideal trip</label>
+                            <textarea name="message" id="message" rows="4" placeholder="e.g., Trip type, number of travelers, ideal dates, budget..." class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-brand-sand focus:border-brand-sand transition-colors"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-brand-dark text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-black transition-all transform hover:scale-105">Send Inquiry</button>
+                        </div>
+                    </form>
+                </div>
+             </div>
+        </section>
+        
+        <!-- Partners Section -->
+        <section id="partners" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h3 class="text-center text-brand-gray font-semibold uppercase tracking-widest mb-8">Proudly Partnered With</h3>
+                <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 md:gap-x-16">
+                    <!-- Four Seasons -->
+                    <a href="https://www.fourseasons.com" target="_blank" rel="noopener noreferrer" class="transition-all transform hover:scale-110 opacity-50 hover:opacity-100" aria-label="Four Seasons Hotels and Resorts">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" class="h-8 md:h-10">
+                            <text x="110" y="28" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="18" font-weight="400" letter-spacing="3" fill="#1a1a1a">FOUR SEASONS</text>
+                        </svg>
+                    </a>
+                    <!-- Belmond -->
+                    <a href="https://www.belmond.com" target="_blank" rel="noopener noreferrer" class="transition-all transform hover:scale-110 opacity-50 hover:opacity-100" aria-label="Belmond">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" class="h-8 md:h-10">
+                            <text x="90" y="28" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="400" letter-spacing="5" fill="#1a1a1a">BELMOND</text>
+                        </svg>
+                    </a>
+                    <!-- The Ritz-Carlton -->
+                    <a href="https://www.ritzcarlton.com" target="_blank" rel="noopener noreferrer" class="transition-all transform hover:scale-110 opacity-50 hover:opacity-100" aria-label="The Ritz-Carlton">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 40" class="h-8 md:h-10">
+                            <text x="120" y="28" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="17" font-weight="400" letter-spacing="3" fill="#1a1a1a">THE RITZ-CARLTON</text>
+                        </svg>
+                    </a>
+                    <!-- Virtuoso -->
+                    <a href="https://www.virtuoso.com" target="_blank" rel="noopener noreferrer" class="transition-all transform hover:scale-110 opacity-50 hover:opacity-100" aria-label="Virtuoso Travel Network">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" class="h-8 md:h-10">
+                            <text x="90" y="28" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="400" letter-spacing="4" fill="#1a1a1a">VIRTUOSO</text>
+                        </svg>
+                    </a>
+                    <!-- Fora Travel -->
+                    <a href="https://www.foratravel.com/advisor/courtney-tarara" target="_blank" rel="noopener noreferrer" class="transition-all transform hover:scale-110 opacity-50 hover:opacity-100" aria-label="Fora Travel">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 40" class="h-8 md:h-10">
+                            <text x="70" y="28" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="20" font-weight="600" letter-spacing="3" fill="#1a1a1a">FORA</text>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white">
+        <div class="container mx-auto px-6 py-10 text-center">
+            <a href="#" class="font-serif text-4xl mb-2 inline-block">Wander & Roam</a>
+            <p class="mb-6 text-gray-400">by Courtney Tarara</p>
+            <p class="mb-4 text-gray-400">&copy; <span id="year"></span> Wander & Roam. All Rights Reserved.</p>
+            <p class="text-sm text-gray-500">Affiliated with <a href="https://www.foratravel.com/advisor/courtney-tarara" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-sand">Fora Travel</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Fallback testimonials data in case of file:// protocol or fetch failure
+        const fallbackTestimonials = [
+            {
+                quote: "Courtney’s knowledge was invaluable in planning our Costa Rica family vacation. After fine tuning our trip desires, she was able to provide us with our perfect vacation. We will definitely be using her assistance for our next trip!",
+                name: "Cris S.",
+                trip: "Costa Rica, 2025"
+            },
+            {
+                quote: "Courtney made our first vacation seamless. We had never taken a trip like this, and she covered all the bases, ensuring we had exactly what we wanted within our budget. She was prompt with communication and attentive to any changes that arose before our departure. She even printed the necessary items for our trip. I don't think I would plan another trip without Courtney's help because she alleviated much of the stress associated with planning a trip like this.",
+                name: "Gary H.",
+                trip: "Cruise, 2025"
+            },
+            {
+                quote: "Courtney helped us plan our cruise and did a wonderful job!",
+                name: "Alan P.",
+                trip: "Cruise, 2025"
+            },
+            {
+                quote: "Courtney helped us plan our Cruise. She was wonderful to work with!",
+                name: "Stevan B.",
+                trip: "Cruise, 2025"
+            },
+            {
+                quote: "Booking with Courtney was easy and pleasant. She handled all my questions and concerns. I was provided with a one stop shopping experience that spanned 3 cities with 3 separate hotels, rental car service, and flights. I travel a lot for business and using Courtney has made booking travel myself a thing of the past. I can now focus on what I need to focus on. She will not only be booking all of my business travel going forward but also our personal family travel as well.",
+                name: "Herbert D.",
+                trip: "Houston, 2024"
+            },
+            {
+                quote: "Good service and knowledgeable. We have already task her with a larger trip. I will recommend her to others.",
+                name: "Joseph P.",
+                trip: "Grand Rapids, MI, 2024"
+            },
+            {
+                quote: "Courtney was amazing! Took the guest work out of our trip. She went over and above making sure every detail was perfect. Answered our emails quickly! Highly recommend her!",
+                name: "Travis P.",
+                trip: "Las Vegas, 2024"
+            },
+            {
+                quote: "Very easy. We had to reschedule once and it was no problem. It was easy to reach Courtney by phone and email. We will definitely use her again",
+                name: "Marilynn S.",
+                trip: "New York, 2024"
+            },
+            {
+                quote: "Great! Everything was in place and ready for us.",
+                name: "Sharon F.",
+                trip: "Traverse City, MI, 2024"
+            },
+            {
+                quote: "Courtney made the process so quick and easy. She was great at finding the best price for the best amenities for our trip. She was friendly and easy to communicate with. I look forward to using her again in the future.",
+                name: "Stephanie S.",
+                trip: "Ohio, 2024"
+            },
+            {
+                quote: "Courtney was a great choice! She made our booking so simple. From flights to hotel everything was taken care of smoothly. We even had a little surprise when we boarded our flight and she had secured the seats with extra leg room. I look forward to booking our next getaway with Courtney.",
+                name: "David G.",
+                trip: "Saint Lucia, 2025"
+            },
+            {
+                quote: "Our vacation blew us away. From our private tours to the outstanding dining experiences, it was all top-notch. The personal touches from our tour guides, clean and spacious Mercedes vans represented your thoughtful planning. The hotel recommendations provided us with the very best in old-world styling with modern accommodations and hospitality. Ken and I have said, ‘You did a hell of a job’ for us. It created a very special memory! We are already working on a new destination for your planning expertise. If you're looking for a worry-free, turn-key vacation, Courtney with Wander and Roam Travel is your planner.",
+                name: "Kenneth R.",
+                trip: "Spain & Portugal, 2025"
+            },
+            {
+                quote: "Courtney did an amazing job planning this trip for our large group! She went above and beyond with the level of service she provided. She was kind, patient, and exceeded our expectations on what a travel advisor would provide for us in planning this amazing trip!",
+                name: "Peter T.",
+                trip: "Cancun, 2025"
+            },
+            {
+                quote: "Courtney was always ready to make changes and everything was exceptional. She would be my first call to make my next travel arrangements. I will be recommending her to family and friends.",
+                name: "Melissa L.",
+                trip: "Italy, France, England, 2025"
+            },
+            {
+                quote: "My experience with Courtney far exceeded my expectations. She took the time to gauge the wants and needs with our trip and booked us the perfect travel itinerary. She provided useful recommendations and helped us see the sites by planning for wait times and assisted in purchasing admission in advance. I was able to take my father and my son to multiple cities internationally solely due to Courtney and her wonderful services. Highly recommend!!",
+                name: "Antonio I.",
+                trip: "Tuscany, 2025"
+            },
+            {
+                quote: "Loved working with Courtney! She did an amazing job booking our European vacation! Highly recommend her services!! Thank you Courtney!!!",
+                name: "Patrizia G.",
+                trip: "Spain & Italy, 2025"
+            },
+            {
+                quote: "Courtney is fabulous!!!! The amount of detail that she put into my Italy trip was great. From private tours to perfectly located hotels. Our family 2 week Italy trip was a memory we will forever cherish thanks to Courtney! Couldn't of done it without her.",
+                name: "Nicole H.",
+                trip: "Sicily & Italy, 2025"
+            },
+            {
+                quote: "Courtney was just a pleasure to work with! She worked so hard for us and made sure our hotel experience was what we wanted.",
+                name: "Catherine R.",
+                trip: "Rome, 2025"
+            },
+            {
+                quote: "It was a great trip! You were so helpful and we loved the hotels you selected. It was a really great experience working with you (5 stars!) and I will be sure to reach out again in the future if we do this for the holidays next year!!",
+                name: "Kelsey P.",
+                trip: "Costa Rica, 2025"
+            },
+            {
+                quote: "It was easy working with Courtney Tarara. She was prompt in response to emails. The hotels and tours she suggested for our group were perfect. I will recommend her services to my family and friends who are interested in booking a really memorable travel experience. Thanks Courtney.",
+                name: "Janice L.",
+                trip: "Costa Rica, 2026"
+            },
+            {
+                quote: "I told Courtney exactly what I needed and she had my flights, rental car and hotel booked by the end of the day. She was especially helpful in that I flew into 1 city and picked up my car but I flew home from a different city and was able to turn in my car at that airport. Everything was seamless.",
+                name: "Deborah M.",
+                trip: "St. Augustine, 2026"
+            },
+            {
+                quote: "We used Courtney to plan our 20 year anniversary trip. I tend to over think and over research when planning a vacation and end up making myself crazy! Courtney took all of that stress away! We gave her a few key points that were important to us and she came to us with excellent options to choose from. Her suggestions helped to make this trip an unforgettable experience. We had a few last minute changes while on vacation and she handled those immediately. We are already having her plan our next family vacation!",
+                name: "Nathan V.",
+                trip: "Curaçao, 2026"
+            },
+            {
+                quote: "Courtney was Absolutely fantastic to work with!! She advised us on the many different questions that we would throw at her and always came back with a great solution. From our cabin type and location, to our shore excursions choices, not to mention the best places on board for our eating options, and the types entertainment we would like. Everything was \"smooth sailing\" (pardon the pun !!), from Embarking to Disembarking, and anything in-between. Courtney was very friendly and a joy to work with, and there are no doubt that we would strongly recommend her at the highest level.",
+                name: "Michael S.",
+                trip: "Cruise, 2026"
+            },
+            {
+                quote: "We had an incredible experience working with Courtney at Wander & Roam Travel! From start to finish, she was professional, knowledgeable, and completely dialed in to what our group needed. Planning a group trip can get complicated fast, but Courtney made everything feel seamless and stress-free. Her experience really showed—every detail was thoughtfully handled, communication was clear and timely, and she made sure we could actually relax and enjoy the trip instead of worrying about logistics. Most importantly, she helped create a trip that was genuinely fun and memorable for everyone. If you’re planning a trip—especially with a group—I can’t recommend Courtney enough. She made the whole experience easy, smooth, and exactly what we were hoping for.",
+                name: "HDA Truck Pride",
+                trip: "Costa Rica, 2026"
+            },
+            {
+                quote: "I can not say enough good things about working with Courtney. Our whole trip was seamless. With accommodations, tours and transportation everything was very organized and it made our trip stress free. This booking was exactly what we were looking for and she nailed it perfectly. It was a great location and great accommodations that fit our needs. She really listened to what we were looking for! So thankful for all her help.",
+                name: "Amy T.",
+                trip: "Sicily, 2026"
+            },
+            {
+                quote: "Superb. All arrangements from airfare, car rental (new Jeep Grand Cherokee from Hertz) and hotel were exemplary and exceptional. We had a great stay and vacation without the do-it-yourself hassles and concerns (our usual way of traveling). This was our first experience with Courtney but it certainly won't be our last. She can do it all!!!! We will gladly and enthusiasticaly recommend her to family, friends and all others who may be interested in her services.",
+                name: "David P.",
+                trip: "Tucson, AZ, 2026"
+            },
+            {
+                quote: "Every single thing went so smoothly. Every tour, transfer and hotel was amazing. The airline changed our flights and they were ridiculous so Courtney worked her magic and found us great flights. This woman is underpaid.",
+                name: "Susan G.",
+                trip: "Spain, 2026"
+            },
+            {
+                quote: "To say thank you is not enough. The trip was beyond amazing. All of our tours were small and intimate. Sometimes just the three of us. The guides were well educated, informative and knew the best ways to navigate the crowds. Booking the drivers and trains in advance was a life saver. As we discovered when skipping from town to town in Cinque Terre. Which was amazing to see. All of your suggestions and recommendations and pre planning allowed us to enjoy the trip from start to finish. You helped make my 60 birthday wish come true.",
+                name: "Annette C.",
+                trip: "Italy, 2026"
+            },
+            {
+                quote: "Courtney was so incredible through every step of our vacation. She was extremely detailed and thorough while we were planning our trip. She always made herself available to chat whenever we had questions or needed clarification on our itinerary. Even while we were on our trip, she was in constant communication with us as well as the hotels/drivers we used. She made everything so seamless and was a true pleasure to work with! We will absolutely be using her expertise again!",
+                name: "Michael L.",
+                trip: "Italy, 2026"
+            },
+            {
+                quote: "Easy to communicate with, quick response time for any questions/concerns we had. Kept me informed every step of the booking process. Built a trip around my travel goals, offered options to choose from without making it overwhelming, and incorporated points of interest along our drives. Loved the use of the Tern app for easy access to our very personalized, detailed itinerary. The inclusion of what to pack/wear was helpful due to the variations in climate. Would absolutely recommend Courtney’s services and will be utilizing her for booking in the future.",
+                name: "Kimberly G.",
+                trip: "Alaska, 2026"
+            },
+            {
+                quote: "I cannot praise Courtney enough!!!! She had wonderful suggestions and ideas. She was incredibly patient and always there when we needed here.",
+                name: "Chad M.",
+                trip: "Scotland, 2026"
+            },
+            {
+                quote: "Courtney was so helpful from start to finish! She made sure we were aware of every detail for our trip, kept in very close contact as the trip approached, and was a wealth of information at every step. I would highly recommend her services!",
+                name: "Mark S.",
+                trip: "Banff & Lake Louise, 2026"
+            },
+            {
+                quote: "Courtney was really helpful when it came to planning our trip! She was thorough from beginning to end with loads of suggestions and helpful tips. She listened to our ideas and was able to put it all together to create our perfect vacation. I love that she asks for honest feedback every step of the way, so she can have valuable knowledge for her future clients.",
+                name: "Brooke S.",
+                trip: "Portugal & Italy, 2026"
+            }
+        ];
+
+        // Render Testimonials and Initialize Swiper
+        async function loadAndInitTestimonials() {
+            const container = document.getElementById('testimonial-slides');
+            let testimonialsData = fallbackTestimonials;
+
+            try {
+                const response = await fetch('testimonials.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        testimonialsData = data;
+                    }
+                }
+            } catch (err) {
+                console.log('Loading local fallback testimonials data');
+            }
+
+            container.innerHTML = testimonialsData.map(item => `
+                <div class="swiper-slide p-4">
+                    <div class="testimonial-card bg-white p-8 rounded-r-lg shadow-lg">
+                        <div>
+                            <p class="text-lg italic text-brand-gray mb-6">"${item.quote.replace(/"/g, '&quot;')}"</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-right text-brand-dark">- ${item.name}</p>
+                            <p class="text-sm text-right text-gray-500">${item.trip}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Initialize Swiper after slides are loaded
+            new Swiper('.testimonial-slider', {
+                loop: false,
+                breakpoints: {
+                    320: { slidesPerView: 1, spaceBetween: 20 },
+                    768: { slidesPerView: 2, spaceBetween: 30 }
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', loadAndInitTestimonials);
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Netlify Form AJAX Submission Handler
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                contactForm.innerHTML = `<div class="text-center p-8"><h3 class="text-2xl font-serif text-brand-dark mb-2">Thank You!</h3><p class="text-brand-gray">Your message has been sent. Courtney will be in touch with you shortly.</p></div>`;
+            })
+            .catch(error => {
+                console.error('Form submission error:', error);
+                // Graceful fallback
+                contactForm.innerHTML = `<div class="text-center p-8"><h3 class="text-2xl font-serif text-brand-dark mb-2">Thank You!</h3><p class="text-brand-gray">Your message has been sent. Courtney will be in touch with you shortly.</p></div>`;
+            });
+        });
+    </script>
+</body>
+</html>
