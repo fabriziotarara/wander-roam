@@ -320,6 +320,7 @@
                         </div>
                         <div class="text-center">
                             <button type="submit" class="bg-brand-dark text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-black transition-all transform hover:scale-105">Send Inquiry</button>
+                            <p id="contact-form-error" role="alert" class="hidden mt-4 text-brand-dark">Your message couldn't be sent. Please try again in a moment, or reach me through my <a href="https://www.foratravel.com/advisor/courtney-tarara" target="_blank" rel="noopener noreferrer" class="underline hover:text-brand-sand">Fora profile</a>.</p>
                         </div>
                     </form>
                 </div>
@@ -620,19 +621,29 @@
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(contactForm);
-            
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const errorMessage = document.getElementById('contact-form-error');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending…';
+            errorMessage.classList.add('hidden');
+
             fetch('/', {
                 method: 'POST',
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams(formData).toString()
             })
-            .then(() => {
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Form submission failed with status ${response.status}`);
+                }
                 contactForm.innerHTML = `<div class="text-center p-8"><h3 class="text-2xl font-serif text-brand-dark mb-2">Thank You!</h3><p class="text-brand-gray">Your message has been sent. Courtney will be in touch with you shortly.</p></div>`;
             })
             .catch(error => {
                 console.error('Form submission error:', error);
-                // Graceful fallback
-                contactForm.innerHTML = `<div class="text-center p-8"><h3 class="text-2xl font-serif text-brand-dark mb-2">Thank You!</h3><p class="text-brand-gray">Your message has been sent. Courtney will be in touch with you shortly.</p></div>`;
+                // Keep what the visitor typed and let them try again, rather than claiming it was sent
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Inquiry';
+                errorMessage.classList.remove('hidden');
             });
         });
     </script>
