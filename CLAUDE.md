@@ -29,7 +29,8 @@ https://www.foratravel.com/advisor/courtney-tarara
   HTML directly.
 - **Fonts (Google Fonts):** "Dancing Script" for display headings (used through
   the `font-serif` class) and "Inter" for body text (`font-sans`).
-- **Testimonial slider:** Swiper (loaded from unpkg).
+- **Testimonial slider:** Swiper, loaded from unpkg and locked to version 14.3.0
+  so a new Swiper release can't change or break the slider unexpectedly.
 - **Contact form: Netlify Forms.** The form is named `contact` and has fields
   `name`, `email`, `destination`, `message`, plus a hidden `bot-field` honeypot
   and `form-name` hidden input. Submissions arrive through Netlify.
