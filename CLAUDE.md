@@ -133,9 +133,9 @@ footer. If it ever changes, update both places in the same PR.
 
 ## Known notes (as of Oct 2026)
 
-- The site has a `robots.txt` (allows all search engines) but **no `sitemap.xml`**
-  yet — adding one (and a `Sitemap:` line in `robots.txt`) is a small, worthwhile
-  SEO improvement for a future PR.
+- The site has a `robots.txt` (allows all search engines) that points to
+  `sitemap.xml`. The sitemap lists the one page; if a new page is ever added,
+  add it to `sitemap.xml` in the same PR.
 - One legacy image path from the site's old WordPress setup (`wp-content/uploads/…`)
   is still referenced in the page. Harmless, but worth tidying if that image is
   ever replaced.
